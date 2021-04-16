@@ -1,0 +1,54 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateToursTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tours', function (Blueprint $table) {
+            $table->id();
+            $table->string('tour_name');
+            $table->integer('tour_price');
+            $table->string('tour_address');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('tour_review');
+            $table->text('tour_details');
+            $table->string('tour_image');
+            $table->unsignedbiginteger('admin_id');
+            $table->unsignedbiginteger('tour_guide_id');
+            $table->timestamps();
+
+            $table->foreign('admin_id')
+                ->references('id')
+                ->on('admins')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('tour_guide_id')
+                ->references('id')
+                ->on('tour_guide')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tours');
+    }
+}
