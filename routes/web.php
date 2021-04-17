@@ -12,28 +12,32 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('content.home');
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/', function () {
+        return view('content.home');
+    });
+    Route::get('/hotel', function () {
+        return view('content.hotelDetails');
+    });
+    Route::get('/hotels', function () {
+        return view('content.hotels');
+    });
+    Route::get('/tours', function () {
+        return view('content.tours');
+    });
+    Route::get('/tour', function () {
+        return view('content.tourDetails');
+    });
+    Route::get('/cars', function () {
+        return view('content.cars');
+    });
+    Route::get('/car', function () {
+        return view('content.carDetails');
+    });
 });
 
-Route::get('/hotel', function () {
-    return view('content.hotelDetails');
-});
-Route::get('/hotels', function () {
-    return view('content.hotels');
-});
-Route::get('/tours', function () {
-    return view('content.tours');
-});
-Route::get('/tour', function () {
-    return view('content.tourDetails');
-});
-Route::get('/cars', function () {
-    return view('content.cars');
-});
-Route::get('/car', function () {
-    return view('content.carDetails');
-});
 
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

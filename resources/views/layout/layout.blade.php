@@ -10,7 +10,7 @@
 	<link rel="shortcut icon" href="favicon.ico" />
 
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-    
+
 	<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 	<link href="{{asset('css/jquery-ui.structure.min.css')}}" rel="stylesheet" type="text/css"/>
 	<link href="{{asset('css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css" />
@@ -26,11 +26,7 @@
    <div id="scroll-top">
 		<i class="fa fa-chevron-up fa-2x"></i>
 	</div>
-	<!-- End The Scroll To Top -->
-
-
-
-
+<!-- End The Scroll To Top -->
 
 	<div class="loading">
 		<div class="loading-center">
@@ -94,8 +90,6 @@
 			</div>
 		</div>
 	</header>
-
-
 @yield('home')
 @yield('hotels')
 @yield('hotel')
@@ -103,11 +97,6 @@
 @yield('tour')
 @yield('cars')
 @yield('car')
-
-
-
-
-
     <footer class="bg-dark type-2">
 		<div class="container">
 			<div class="row">
