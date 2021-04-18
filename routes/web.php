@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/', function () {
         return view('content.home');
@@ -36,8 +38,7 @@ Route::group(['middleware'=>'auth'], function(){
     });
 });
 
-
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
