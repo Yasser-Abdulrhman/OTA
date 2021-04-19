@@ -85,12 +85,22 @@
                                     </x-jet-button>
 
                                 </div>
+                                <div class="flex items-center justify-end mt-4">
+                                    <a class="btn btn-primary"  href="{{ url('auth/google') }}">
+                                        <strong> Login With Google </strong>
+                                    </a>
+                                </div>
                             </form>
                             <div>
                                 <p><a class="btn btn-success" href="{{ route('register') }}">I Don't have an account? sign up</a></p>
                             </div>
+
+{{--                            <a href="{{ url('auth/google') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">--}}
+{{--                                <strong>Login With Google</strong>--}}
+{{--                            </a>--}}
                         </x-jet-authentication-card>
                     </x-guest-layout>
+
 
                 </div>
             </div>
