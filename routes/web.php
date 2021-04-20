@@ -40,8 +40,8 @@ Route::group(['middleware'=>'auth'], function(){
     });
 });
 
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::get('auth/{service}', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/{service}/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

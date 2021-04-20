@@ -15,9 +15,9 @@ class GoogleController extends Controller
      *
      * @return void
      */
-    public function redirectToGoogle()
+    public function redirectToGoogle($service)
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver($service)->redirect();
     }
 
     /**
@@ -25,11 +25,11 @@ class GoogleController extends Controller
      *
      * @return void
      */
-    public function handleGoogleCallback()
+    public function handleGoogleCallback($service)
     {
         try {
 
-            $user = Socialite::driver('google')->user();
+            $user = Socialite::driver($service)->user();
 
             $finduser = User::where('google_id', $user->id)->first();
 
