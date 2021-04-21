@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::group(['middleware'=>'auth'], function(){
+//Route::group(['middleware'=>'auth'], function(){
     Route::get('/', function () {
         return view('content.home');
     });
@@ -38,7 +37,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/car', function () {
         return view('content.carDetails');
     });
-});
+//});
 
 Route::get('auth/{service}', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/{service}/callback', [GoogleController::class, 'handleGoogleCallback']);

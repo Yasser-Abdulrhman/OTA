@@ -24,6 +24,7 @@
                                             aria-expanded="false">Cars</a></li>
                                     <li class="click-tabs"><a href="tours.html" data-toggle="tab"
                                             aria-expanded="false">Tours</a></li>
+
                                 </ul>
                             </div>
                         </div>
