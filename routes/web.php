@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TourController;
@@ -20,6 +22,7 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
 // Route::group(['middleware'=>'auth'], function(){
 //     Route::get('/', function () {
 //         return view('content.home');
@@ -68,8 +71,38 @@ Route::get('home', [HomeController::class, 'index']);
 // Route::get('tours/asc', [TourController::class, 'tourAsc'])->name('tours.asc');
 
 
+=======
 
+//Route::group(['middleware'=>'auth'], function(){
+    Route::get('/', function () {
+        return view('content.home');
+    });
+    Route::get('/hotel', function () {
+        return view('content.hotelDetails');
+    });
+    Route::get('/hotels', function () {
+        return view('content.hotels');
+    });
+    Route::get('/tours', function () {
+        return view('content.tours');
+    });
+    Route::get('/tour', function () {
+        return view('content.tourDetails');
+    });
+    Route::get('/cars', function () {
+        return view('content.cars');
+    });
+    Route::get('/car', function () {
+        return view('content.carDetails');
+    });
+//});
+>>>>>>> 50fa0fd260811304f3cac5ffa3c364243dd3e4ee
+
+Route::get('auth/{service}', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/{service}/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
