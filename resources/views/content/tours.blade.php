@@ -318,8 +318,8 @@
                                                 <span class="fa fa-star color-yellow"></span>
                                             </div>
                                         </div>
-                                        <div class="hotel-person color-dark-2">from <span class="color-blue">{{$item->tour_price}}</span>
-                                            person</div>
+                                        <div class="hotel-person color-dark-2"> <span class="color-blue">{{$item->tour_price}} EGP <br></span>
+                                           per person</div>
                                     </div>
                                 </div>
                             </div>

@@ -91,9 +91,9 @@
                                     <div class="nav-tab-item">
                                         Details
                                     </div>
-                                    <div class="nav-tab-item">
+                                    {{-- <div class="nav-tab-item">
                                         Reviews
-                                    </div>
+                                    </div> --}}
                                     <div class="nav-tab-item">
                                         Booking
                                     </div>
@@ -122,19 +122,17 @@
                                         dolore magna aliqua.</p>
                                 </div>
                                 <div class="tab-info">
-                                    <h3>General Information About tour</h3>
-                                    <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
-                                        aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
-                                        Pellentesque ac turpis egestas, varius justo et, condimentum augue. Lorem
-                                        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                                    <h3>{{ Str::upper($data->tour_name) }} Details</h3>
+                                    <p>{{ $data->tour_details }}
                                     </p>
+                                    
                                     <ul>
-                                        <li>Shopping history</li>
-                                        <li>Hot offers according your settings</li>
+                                        <li>Price : {{$data->tour_price}} EGP per person </li>
+                                        <li>Discount : 10%</li>
                                         <li>Multi-product search</li>
                                         <li>Opportunity to share with friends</li>
                                     </ul>
-                                    <h4>interesting for you</h4>
+                                    {{-- <h4>interesting for you</h4>
                                     <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
                                         aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
                                     </p>
@@ -143,9 +141,9 @@
                                         aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
                                         Pellentesque varius justo et, condimentum augue. Lorem ipsum dolor sit amet,
                                         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                        dolore magna aliqua.</p>
+                                        dolore magna aliqua.</p> --}}
                                 </div>
-                                <div class="tab-info">
+                                {{-- <div class="tab-info">
 
                                     <img class="right-img" src="{{asset('img/detail/tab_img.jpg')}}" alt="">
                                     <h3>General Information About tour</h3>
@@ -170,10 +168,19 @@
                                         Pellentesque varius justo et, condimentum augue. Lorem ipsum dolor sit amet,
                                         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                                         dolore magna aliqua.</p>
-                                </div>
+                                </div> --}}
                                 <div class="tab-info">
-                                    <form class="simple-from" name="information"
-                                        onsubmit="return validateFormTour()" >
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                      <ul>
+                                          @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                          @endforeach
+                                      </ul>
+                                    </div><br />
+                                  @endif
+                                    <form class="simple-from" 
+                                        onsubmit="return validateFormTour()" action="{{route('booktour.store' ,["id" =>$data] )}}" method="post" >
                                         @csrf
                                         <div class="simple-group">
                                             <h3 class="small-title color-dr-blue-2 ">Tour Booking</h3>
@@ -203,9 +210,9 @@
                                                                     <a href="#" class="tperson">4</a>
                                                                 </span>
                                                             </div> --}}
-                                                            <div class="input-style-1 b-50 brd-0 type-2 color-3">
+                                                            {{-- <div class="input-style-1 b-50 brd-0 type-2 color-3">
                                                                 <input type="number"  class="" name="person">
-                                                            </div>
+                                                            </div> --}}
                                                           
                                                               
                                                         </div>
@@ -226,91 +233,7 @@
                                             </div>
                                             <hr>
                                         </div>
-                                        {{-- <div class="simple-group">
-                                            <h3 class="small-title color-dr-blue-2">Your Personal Information</h3>
-                                            <div class="row">
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <div class="form-block type-2 clearfix">
-                                                        <div class="form-label color-dark-2">First Name</div>
-                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                            <input type="text" name="fname"
-                                                                placeholder="Enter your first name">
-                                                            <span class="error color-dr-blue-2 "
-                                                                id="fnameErr"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <div class="form-block type-2 clearfix">
-                                                        <div class="form-label color-dark-2">Last Name</div>
-                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                            <input type="text" name="lname"
-                                                                placeholder="Enter your last name">
-                                                            <span class="error color-dr-blue-2"
-                                                                id="lnameErr"></span>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <div class="form-block type-2 clearfix">
-                                                        <div class="form-label color-dark-2">E-mail Adress</div>
-                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                            <input type="email" name="email"
-                                                                placeholder="Enter your e-mail adress">
-                                                            <span class="error color-dr-blue-2"
-                                                                id="emailErr"></span>
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="col-xs-12 col-sm-6">
-                                                    <div class="form-block type-2 clearfix">
-                                                        <div class="form-label color-dark-2">Verify E-mail Address
-                                                        </div>
-                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                            <input type="text"
-                                                                placeholder="Enter your e-mail adress for verify">
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <div class="form-block type-2 clearfix">
-                                                        <div class="form-label color-dark-2">Governrate Code</div>
-                                                        <div class="drop-wrap drop-wrap-s-4 color-5">
-                                                            <div class="drop">
-                                                                <b>Minya (086) </b>
-                                                                <a href="#" class="drop-list"><i
-                                                                        class="fa fa-angle-down"></i></a>
-                                                                <span>
-                                                                    <a href="#">Asyt (055)</a>
-                                                                    <a href="#">Cairo (044)</a>
-                                                                    <a href="#">Sohag (063)</a>
-                                                                    <a href="#">Bani Swef (052)</a>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-sm-12">
-                                                    <div class="form-block type-2 clearfix">
-                                                        <div class="form-label color-dark-2">Phone Number</div>
-                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                            <input type="number" name="mobile"
-                                                                placeholder="Enter your phone number">
-                                                            <span class="error color-dr-blue-2"
-                                                                id="mobileErr"></span>
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <hr>
-                                        </div> --}}
-
+                                       
                                         <input type="submit" class="c-button bg-dr-blue-2 hv-dr-blue-2-o"
                                             value="confirm booking">
                                     </form>

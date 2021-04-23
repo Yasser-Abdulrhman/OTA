@@ -38,7 +38,7 @@ class BookTourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request , Tour $tour)
+    public function store(Request $request )
     {
         //
         $request->validate([
@@ -47,10 +47,13 @@ class BookTourController extends Controller
 
         ]);
         $input = $request->all();
+        
         $input['user_id'] = auth()->user()->id;
-        // $input['tour_id'] = $tour->id;
-        BookTour::create($input);
-        // return redirect()->route('');
+        $input['tour_id'] = (int)$input['id'];
+        //dd($input);
+
+       BookTour::create($input);
+        return redirect()->route('tours.index');
 
 
     }
@@ -99,4 +102,7 @@ class BookTourController extends Controller
     {
         //
     }
+
+
+ 
 }

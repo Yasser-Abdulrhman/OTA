@@ -65,7 +65,7 @@ Route::resource('tours', TourController::class);
 Route::resource('hotels', HotelController::class);
 Route::resource('cars', CarController::class);
 Route::resource('booktour', BookTourController::class);
-Route::get('home', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 // Route::get('tours/asc', [TourController::class, 'tourAsc'])->name('tours.asc');
 
