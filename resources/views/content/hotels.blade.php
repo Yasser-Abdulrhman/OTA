@@ -782,10 +782,11 @@
                                 </div>
                             </div>						
                           </div>
-                          
+                   
                             </div>						
                           </div>  						  						  						  						  						  						 						  						  						  						  						  						  						  						
                       </div>
+                      
 
                       <div class="c_pagination clearfix padd-120">
                         <a href="#" class="c-button b-40 bg-dr-blue hv-dr-blue-o fl">prev page</a>
