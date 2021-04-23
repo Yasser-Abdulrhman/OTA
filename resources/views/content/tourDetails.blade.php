@@ -173,7 +173,7 @@
                                 </div>
                                 <div class="tab-info">
                                     <form class="simple-from" name="information"
-                                        onsubmit="return validateFormTour()" method="POST" >
+                                        onsubmit="return validateFormTour()" >
                                         @csrf
                                         <div class="simple-group">
                                             <h3 class="small-title color-dr-blue-2 ">Tour Booking</h3>
