@@ -19,7 +19,7 @@ class CreateCarsTable extends Migration
             $table->text('car_details');
             $table->string('car_image');
             $table->string('car_price');
-            $table->unsignedbiginteger('admin_id');
+            $table->unsignedbiginteger('admin_id')->nullable();
             $table->timestamps();
             $table->foreign('admin_id')
                 ->references('id')

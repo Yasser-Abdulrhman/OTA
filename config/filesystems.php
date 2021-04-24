@@ -40,6 +40,31 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+
+        ],
+        'Hotels' => [
+            'driver' => 'local',
+            'root' => public_path() . '/Images/Hotels/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'Tours' => [
+            'driver' => 'local',
+            'root' => public_path() . '/Images/Hotels/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'Cars' => [
+            'driver' => 'local',
+            'root' => public_path() . '/Images/Cars/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'tourGuide' => [
+            'driver' => 'local',
+            'root' => public_path() . '/Images/tourGuide/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
         ],
 
         's3' => [

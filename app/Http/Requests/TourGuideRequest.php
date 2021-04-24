@@ -13,7 +13,7 @@ class TourGuideRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class TourGuideRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|string|max:100',
+            'phone'=>'required|numeric',
+            'image' =>'required_without:id|mimes:jpg,png,PNG,jpeg',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required'=>'This Field Is Required',
+            'name.string'=>'This Field Should Be String',
+            'name.max'=>'This field must be no more than 100 characters long',
+            'phone.required'=>'This Field Is Required',
+            'phone.numeric'=>'This Field Should Be numeric',
+            'image.required_without'=>'This Field Is Required',
+
         ];
     }
 }

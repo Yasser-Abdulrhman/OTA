@@ -17,8 +17,8 @@ class CreateTourGuideTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->string('phone')->unique();
-            $table->unsignedbiginteger('admin_id');
+            $table->string('phone')->unique()->nullable();
+            $table->unsignedbiginteger('admin_id')->nullable();
             $table->timestamps();
             $table->foreign('admin_id')
                 ->references('id')

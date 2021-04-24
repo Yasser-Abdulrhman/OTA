@@ -27,7 +27,6 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Add Tour Guide</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -51,16 +50,7 @@
 {{--                                            <input type="hidden" value="" id="latitude" name="latitude">--}}
 {{--                                            <input type="hidden" value="" id="longitude" name="longitude">--}}
 
-                                            <div class="form-group">
-                                                <label> Tour Guide Image </label>
-                                                <label id="projectinput7" class="file center-block">
-                                                    <input type="file" id="file" name="image" >
-                                                    <span class="file-custom"></span>
-                                                </label>
-                                                @error('image')
-                                                <span class="text-danger font-size-large">{{$message}}</span>
-                                                @enderror
-                                            </div>
+
 
                                             <div class="form-body">
 
@@ -93,12 +83,24 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <label class="font-size-large"> Tour Guide Image</label>
+                                                            <label id="projectinput7" class="file center-block">
+                                                                <input type="file" class="form-control" id="file" name="image" >
+                                                                <span class="file-custom"></span>
+                                                            </label>
+                                                            @error('image')
+                                                            <span class="text-danger font-size-large">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
 
                                                 </div>
 
                                             </div>
 
-                                            <div id="map" style="height: 500px;width: 1000px"></div>
+{{--                                            <div id="map" style="height: 500px;width: 1000px"></div>--}}
 
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"

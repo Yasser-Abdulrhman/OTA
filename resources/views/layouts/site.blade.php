@@ -66,9 +66,6 @@
 
 <main id="main-site" class="displayhomenovthree">
 
-
-
-
     <header id="header" class="header-3 sticky-menu">
         @include('front.includes.header-mobile')
         @include('front.includes.header-top')
@@ -89,13 +86,8 @@
         </div>
     </div>
 
-
-
-
     <aside id="notifications">
         <div class="container">
-
-
 
         </div>
     </aside>

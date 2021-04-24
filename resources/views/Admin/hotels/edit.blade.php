@@ -9,11 +9,11 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية </a>
+                                <li class="breadcrumb-item"><a href="">Main Page </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.languages')}}"> اللغات </a>
+                                <li class="breadcrumb-item"><a href=""> Hotels </a>
                                 </li>
-                                <li class="breadcrumb-item active"><a href="{{route('admin.languages')}}">إضافة لغة</a>
+                                <li class="breadcrumb-item active"><a href="{{route('admin.hotels.create')}}">Update Hotels</a>
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> إضافة لغة </h4>
+                                    <h4 class="card-title" id="basic-layout-form">Update Hotels</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -43,31 +43,68 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.languages.update',$language->id)}}" method="POST" enctype="multipart/form-data">
+                                        <form class="form" action="{{route('admin.hotels.update',$hotel->id)}}"
+                                              method="POST"
+                                              enctype="multipart/form-data">
                                             @csrf
+                                            {{--                                            --}}
+                                            {{--                                            <input type="hidden" value="" id="latitude" name="latitude">--}}
+                                            {{--                                            <input type="hidden" value="" id="longitude" name="longitude">--}}
+
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <img
+                                                        src="/../../Images/Hotels/{{ $hotel['hot_image']}}"
+                                                        class="rounded  height-200" alt="Image Hotel">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label> Hotel Image </label>
+                                                <label id="projectinput7" class="file center-block">
+                                                    <input type="file" id="file" name="hot_image">
+                                                    <span class="file-custom"></span>
+                                                </label>
+                                                @error('hot_image')
+                                                <span class="text-danger font-size-large">{{$message}}</span>
+                                                @enderror
+                                            </div>
+
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-home"></i>اضافه لغه جديده </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i>Update data</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم اللغة </label>
-                                                            <input type="text" value="{{$language->name}}" id="name"
+                                                            <label for="projectinput1">Hotel Name</label>
+                                                            <input type="text" value="{{$hotel ->hot_name}}" id="hot_name"
                                                                    class="form-control"
-                                                                   placeholder="ادخل اسم اللغة  "
-                                                                   name="name">
-                                                            @error('name')
-                                                                <span class="text-danger font-size-large">{{$message}}</span>
+                                                                   placeholder=""
+                                                                   name="hot_name">
+                                                            @error("hot_name")
+                                                            <span class="text-danger font-size-large">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اختصار اللغه </label>
-                                                            <input type="text" value="{{$language->abbr}}" id="name"
+                                                            <label for="projectinput1">Hotel Price</label>
+                                                            <input type="text" id="price"
                                                                    class="form-control"
-                                                                   placeholder="ادخل اختصار اللغة"
-                                                                   name="abbr">
-                                                            @error('abbr')
+                                                                   placeholder=""
+                                                                   value="{{$hotel->hot_price}}"
+                                                                   name="hot_price">
+                                                            @error("hot_price")
+                                                            <span class="text-danger font-size-large">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">Hotel Details</label>
+                                                            <textarea name="hot_details"  id="details" class="form-control">{{$hotel->hot_details}}</textarea>
+                                                            @error("hot_details")
                                                             <span class="text-danger font-size-large">{{$message}}</span>
                                                             @enderror
                                                         </div>
@@ -75,34 +112,28 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput2"> اتجاه االغه </label>
-                                                            <select name="direction" class="select2 form-control">
-                                                                <optgroup label="من فضلك أختر اتجاه اللغة ">
-                                                                    <option value="rtl" @if($language->direction == 'rtl') selected @endif>من اليمين الي اليسار</option>
-                                                                    <option value="ltr" @if($language->direction == 'ltr') selected @endif>من اليسار الي اليمين</option>
-                                                                </optgroup>
-                                                            </select>
-                                                            @error('direction')
-                                                                <span class="text-danger font-size-large">{{$message}}</span>
+                                                            <label for="projectinput1">Hotel Type</label>
+                                                            <input type="text" value="{{$hotel->hot_type}}" id="hot_type"
+                                                                   class="form-control"
+                                                                   placeholder=""
+                                                                   name="hot_type">
+                                                            @error("hot_type")
+                                                            <span class="text-danger font-size-large">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-1">
-                                                            <input type="checkbox" value="1" name="active"
-                                                                   id="switcheryColor4"
-                                                                   class="switchery" data-color="success"
-                                                                   @if($language->active == 1)checked @endif
-                                                            />
-                                                            <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة</label>
-                                                            @error('active')
-                                                               <span class="text-danger font-size-large">{{$message}}</span>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">Hotel Address</label>
+                                                            <input type="text" value="{{$hotel->hot_address}}" id="hot_type"
+                                                                   class="form-control"
+                                                                   placeholder=""
+                                                                   name="hot_address">
+                                                            @error("hot_address")
+                                                            <span class="text-danger font-size-large">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -110,13 +141,17 @@
 
                                             </div>
 
+                                            {{--                                            <div id="map" style="height: 500px;width: 1000px"></div>--}}
+
+
+
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
-                                                    <i class="ft-x"></i> تراجع
+                                                    <i class="ft-x"></i> Back
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> تحديث
+                                                    <i class="la la-check-square-o"></i> Update
                                                 </button>
                                             </div>
                                         </form>
@@ -131,4 +166,215 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+
+    {{--    <script>--}}
+
+    {{--        $("#pac-input").focusin(function() {--}}
+    {{--            $(this).val('');--}}
+    {{--        });--}}
+
+    {{--        $('#latitude').val('');  //  الاحداث الصادي لخط الطول--}}
+    {{--        $('#longitude').val(''); // الاحداث السيني لخط العرض--}}
+
+
+    {{--        // This example adds a search box to a map, using the Google Place Autocomplete--}}
+    {{--        // feature. People can enter geographical searches. The search box will return a--}}
+    {{--        // pick list containing a mix of places and predicted search terms.--}}
+
+    {{--        // This example requires the Places library. Include the libraries=places--}}
+    {{--        // parameter when you first load the API. For example:--}}
+    {{--        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">--}}
+
+    {{--        function initAutocomplete() {--}}
+    {{--            var map = new google.maps.Map(document.getElementById('map'), {--}}
+    {{--                center: {lat: 24.740691, lng: 46.6528521 },--}}
+    {{--                zoom: 13,--}}
+    {{--                mapTypeId: 'roadmap'--}}
+    {{--            });--}}
+
+    {{--            // move pin and current location--}}
+    {{--            infoWindow = new google.maps.InfoWindow;--}}
+    {{--            geocoder = new google.maps.Geocoder();--}}
+    {{--            if (navigator.geolocation) {--}}
+    {{--                navigator.geolocation.getCurrentPosition(function(position) {--}}
+    {{--                    var pos = {--}}
+    {{--                        lat: position.coords.latitude,--}}
+    {{--                        lng: position.coords.longitude--}}
+    {{--                    };--}}
+    {{--                    map.setCenter(pos);--}}
+    {{--                    var marker = new google.maps.Marker({--}}
+    {{--                        position: new google.maps.LatLng(pos),--}}
+    {{--                        map: map,--}}
+    {{--                        title: 'موقعك الحالي'--}}
+    {{--                    });--}}
+    {{--                    markers.push(marker);--}}
+    {{--                    marker.addListener('click', function() {--}}
+    {{--                        geocodeLatLng(geocoder, map, infoWindow,marker);--}}
+    {{--                    });--}}
+    {{--                    // to get current position address on load--}}
+    {{--                    google.maps.event.trigger(marker, 'click');--}}
+    {{--                }, function() {--}}
+    {{--                    handleLocationError(true, infoWindow, map.getCenter());--}}
+    {{--                });--}}
+    {{--            } else {--}}
+    {{--                // Browser doesn't support Geolocation--}}
+    {{--                console.log('dsdsdsdsddsd');--}}
+    {{--                handleLocationError(false, infoWindow, map.getCenter());--}}
+    {{--            }--}}
+
+    {{--            var geocoder = new google.maps.Geocoder();--}}
+    {{--            google.maps.event.addListener(map, 'click', function(event) {--}}
+    {{--                SelectedLatLng = event.latLng;--}}
+    {{--                geocoder.geocode({--}}
+    {{--                    'latLng': event.latLng--}}
+    {{--                }, function(results, status) {--}}
+    {{--                    if (status == google.maps.GeocoderStatus.OK) {--}}
+    {{--                        if (results[0]) {--}}
+    {{--                            deleteMarkers();--}}
+    {{--                            addMarkerRunTime(event.latLng);--}}
+    {{--                            SelectedLocation = results[0].formatted_address;--}}
+    {{--                            console.log( results[0].formatted_address);--}}
+    {{--                            splitLatLng(String(event.latLng));--}}
+    {{--                            $("#pac-input").val(results[0].formatted_address);--}}
+    {{--                        }--}}
+    {{--                    }--}}
+    {{--                });--}}
+    {{--            });--}}
+    {{--            function geocodeLatLng(geocoder, map, infowindow,markerCurrent) {--}}
+    {{--                var latlng = {lat: markerCurrent.position.lat(), lng: markerCurrent.position.lng()};--}}
+    {{--                /* $('#branch-latLng').val("("+markerCurrent.position.lat() +","+markerCurrent.position.lng()+")");*/--}}
+    {{--                $('#latitude').val(markerCurrent.position.lat());--}}
+    {{--                $('#longitude').val(markerCurrent.position.lng());--}}
+
+    {{--                geocoder.geocode({'location': latlng}, function(results, status) {--}}
+    {{--                    if (status === 'OK') {--}}
+    {{--                        if (results[0]) {--}}
+    {{--                            map.setZoom(8);--}}
+    {{--                            var marker = new google.maps.Marker({--}}
+    {{--                                position: latlng,--}}
+    {{--                                map: map--}}
+    {{--                            });--}}
+    {{--                            markers.push(marker);--}}
+    {{--                            infowindow.setContent(results[0].formatted_address);--}}
+    {{--                            SelectedLocation = results[0].formatted_address;--}}
+    {{--                            $("#pac-input").val(results[0].formatted_address);--}}
+
+    {{--                            infowindow.open(map, marker);--}}
+    {{--                        } else {--}}
+    {{--                            window.alert('No results found');--}}
+    {{--                        }--}}
+    {{--                    } else {--}}
+    {{--                        window.alert('Geocoder failed due to: ' + status);--}}
+    {{--                    }--}}
+    {{--                });--}}
+    {{--                SelectedLatLng =(markerCurrent.position.lat(),markerCurrent.position.lng());--}}
+    {{--            }--}}
+    {{--            function addMarkerRunTime(location) {--}}
+    {{--                var marker = new google.maps.Marker({--}}
+    {{--                    position: location,--}}
+    {{--                    map: map--}}
+    {{--                });--}}
+    {{--                markers.push(marker);--}}
+    {{--            }--}}
+    {{--            function setMapOnAll(map) {--}}
+    {{--                for (var i = 0; i < markers.length; i++) {--}}
+    {{--                    markers[i].setMap(map);--}}
+    {{--                }--}}
+    {{--            }--}}
+    {{--            function clearMarkers() {--}}
+    {{--                setMapOnAll(null);--}}
+    {{--            }--}}
+    {{--            function deleteMarkers() {--}}
+    {{--                clearMarkers();--}}
+    {{--                markers = [];--}}
+    {{--            }--}}
+
+    {{--            // Create the search box and link it to the UI element.--}}
+    {{--            var input = document.getElementById('pac-input');--}}
+    {{--            $("#pac-input").val("أبحث هنا ");--}}
+    {{--            var searchBox = new google.maps.places.SearchBox(input);--}}
+    {{--            map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);--}}
+
+    {{--            // Bias the SearchBox results towards current map's viewport.--}}
+    {{--            map.addListener('bounds_changed', function() {--}}
+    {{--                searchBox.setBounds(map.getBounds());--}}
+    {{--            });--}}
+
+    {{--            var markers = [];--}}
+    {{--            // Listen for the event fired when the user selects a prediction and retrieve--}}
+    {{--            // more details for that place.--}}
+    {{--            searchBox.addListener('places_changed', function() {--}}
+    {{--                var places = searchBox.getPlaces();--}}
+
+    {{--                if (places.length == 0) {--}}
+    {{--                    return;--}}
+    {{--                }--}}
+
+    {{--                // Clear out the old markers.--}}
+    {{--                markers.forEach(function(marker) {--}}
+    {{--                    marker.setMap(null);--}}
+    {{--                });--}}
+    {{--                markers = [];--}}
+
+    {{--                // For each place, get the icon, name and location.--}}
+    {{--                var bounds = new google.maps.LatLngBounds();--}}
+    {{--                places.forEach(function(place) {--}}
+    {{--                    if (!place.geometry) {--}}
+    {{--                        console.log("Returned place contains no geometry");--}}
+    {{--                        return;--}}
+    {{--                    }--}}
+    {{--                    var icon = {--}}
+    {{--                        url: place.icon,--}}
+    {{--                        size: new google.maps.Size(100, 100),--}}
+    {{--                        origin: new google.maps.Point(0, 0),--}}
+    {{--                        anchor: new google.maps.Point(17, 34),--}}
+    {{--                        scaledSize: new google.maps.Size(25, 25)--}}
+    {{--                    };--}}
+
+    {{--                    // Create a marker for each place.--}}
+    {{--                    markers.push(new google.maps.Marker({--}}
+    {{--                        map: map,--}}
+    {{--                        icon: icon,--}}
+    {{--                        title: place.name,--}}
+    {{--                        position: place.geometry.location--}}
+    {{--                    }));--}}
+
+
+    {{--                    $('#latitude').val(place.geometry.location.lat());--}}
+    {{--                    $('#longitude').val(place.geometry.location.lng());--}}
+
+    {{--                    if (place.geometry.viewport) {--}}
+    {{--                        // Only geocodes have viewport.--}}
+    {{--                        bounds.union(place.geometry.viewport);--}}
+    {{--                    } else {--}}
+    {{--                        bounds.extend(place.geometry.location);--}}
+    {{--                    }--}}
+    {{--                });--}}
+    {{--                map.fitBounds(bounds);--}}
+    {{--            });--}}
+    {{--        }--}}
+    {{--        function handleLocationError(browserHasGeolocation, infoWindow, pos) {--}}
+    {{--            infoWindow.setPosition(pos);--}}
+    {{--            infoWindow.setContent(browserHasGeolocation ?--}}
+    {{--                'Error: The Geolocation service failed.' :--}}
+    {{--                'Error: Your browser doesn\'t support geolocation.');--}}
+    {{--            infoWindow.open(map);--}}
+    {{--        }--}}
+    {{--        function splitLatLng(latLng){--}}
+    {{--            var newString = latLng.substring(0, latLng.length-1);--}}
+    {{--            var newString2 = newString.substring(1);--}}
+    {{--            var trainindIdArray = newString2.split(',');--}}
+    {{--            var lat = trainindIdArray[0];--}}
+    {{--            var Lng  = trainindIdArray[1];--}}
+
+    {{--            $("#latitude").val(lat);--}}
+    {{--            $("#longitude").val(Lng);--}}
+    {{--        }--}}
+
+    {{--    </script>--}}
+    {{--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuyTzxYXZeyRhDhHivfmsHvGdEuadcd7M&libraries=places&callback=initAutocomplete&language=ar&region=EG--}}
+    {{--         async defer"></script>--}}
 @endsection

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HotelRequest;
 use App\Models\Hotel;
+use App\Models\Tour;
 use App\Traits\HotelTrait;
 use Illuminate\Http\Request;
+use DB;
 
 class HotelController extends Controller
 {
@@ -68,12 +70,22 @@ class HotelController extends Controller
                 return redirect()->route('admin.hotels.edit', $hotel_id)->with(['error' => 'This Hotels Not Found']);
             }
 
-            $hotel->update($request->except('_token'));
+            DB::beginTransaction();
+            //photo
+            if ($request->has('hot_image') ) {
+                $filePath = $this->saveImages($request->hot_image,'Images/Tours/');
+                Hotel::where('id', $hotel_id)
+                    ->update([
+                        'hot_image' => $filePath,
+                    ]);
+            }
 
+            $hotel->update($request->except('_token' , 'id', 'hot_image'));
+            DB::commit();
             return redirect()->route('admin.hotels')->with(['success' => 'Hotels Updated Successfully']);
 
         } catch(\Exception $ex){
-
+            DB::rollback();
             return redirect()->route('admin.hotels')->with(['error' => 'Their is Error Please, try again later']);
 
         }

@@ -20,11 +20,12 @@ class CreateToursTable extends Migration
             $table->string('tour_address');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('tour_review');
+            $table->string('tour_review')->nullable();
+            $table->string('tour_discount');
             $table->text('tour_details');
             $table->string('tour_image');
-            $table->unsignedbiginteger('admin_id');
-            $table->unsignedbiginteger('tour_guide_id');
+            $table->unsignedbiginteger('admin_id')->nullable();
+            $table->unsignedbiginteger('tour_guide_id')->nullable();
             $table->timestamps();
 
             $table->foreign('admin_id')

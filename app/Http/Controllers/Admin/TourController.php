@@ -7,6 +7,7 @@ use App\Http\Requests\TourRequest;
 use App\Models\Tour;
 use App\Traits\HotelTrait;
 use Illuminate\Http\Request;
+use DB;
 
 class TourController extends Controller
 {
@@ -20,9 +21,8 @@ class TourController extends Controller
         return view('admin.tours.create');
     }
 
-    public function store(Request $request) {
+    public function store(TourRequest $request) {
 
-//        dd($request);
         try {
             $filePath = "";
             if ($request->has('tour_image')) {
@@ -45,55 +45,55 @@ class TourController extends Controller
             return redirect()->route('admin.tours')->with(['success' => 'Tours Added Successfully']);
 
         } catch(\Exception $ex) {
-            dd($ex);
+//            dd($ex);
             return redirect()->route('admin.tours')->with(['error' => 'Entering data wrong, try again later']);
         }
 
     }
 
-    public function edit($hotel_id) {
+    public function edit($tour_id) {
 
-        $hotel = Hotel::find($hotel_id);
+        $tour = Tour::find($tour_id);
 
-        if (!$hotel) {
-            return redirect()->route('admin.hotels')->with(['error'=>'This Hotels Not Found']);
+        if (!$tour) {
+            return redirect()->route('admin.tours')->with(['error'=>'This Tours Not Found']);
         }
-        return view('admin.hotels.edit',compact('hotel'));
+        return view('admin.tours.edit',compact('tour'));
 
     }
 
-    public function update($hotel_id,HotelRequest $request)
+    public function update($tour_id,TourRequest $request)
     {
         try {
-            $hotel = Hotel::find($hotel_id);
+            $tour = Tour::find($tour_id);
 
-            if (!$hotel) {
-                return redirect()->route('admin.hotels.edit', $hotel_id)->with(['error' => 'This Hotels Not Found']);
+            if (!$tour) {
+                return redirect()->route('admin.tours.edit', $tour_id)->with(['error' => 'This Tours Not Found']);
             }
 
-            $hotel->update($request->except('_token'));
+            $tour->update($request->except('_token'));
 
-            return redirect()->route('admin.hotels')->with(['success' => 'Hotels Updated Successfully']);
+            return redirect()->route('admin.tours')->with(['success' => 'Tours Updated Successfully']);
 
         } catch(\Exception $ex){
 
-            return redirect()->route('admin.hotels')->with(['error' => 'Their is Error Please, try again later']);
+            return redirect()->route('admin.tours')->with(['error' => 'Their is Error Please, try again later']);
 
         }
 
     }
 
-    public function delete($hotel_id) {
+    public function delete($tour_id) {
         try {
-            $hotel = Hotel::find($hotel_id);
-            if (!$hotel)
-                return redirect()->route('admin.hotels.edit', $hotel_id)->with(['error'=>'Hotels You Want To Delete Not Found']);
+            $tour = Tour::find($tour_id);
+            if (!$tour)
+                return redirect()->route('admin.tours.edit', $tour_id)->with(['error'=>'Tours You Want To Delete Not Found']);
 
-            $hotel->delete();
-            return redirect()->route('admin.hotels')->with(['success' => 'Hotels Deleted Successfully']);
+            $tour->delete();
+            return redirect()->route('admin.tours')->with(['success' => 'Tours Deleted Successfully']);
 
         } catch (\Exception $ex) {
-            return redirect()->route('admin.hotels')->with(['error' => 'Their is Error Please, try again later']);
+            return redirect()->route('admin.tours')->with(['error' => 'Their is Error Please, try again later']);
 
         }
 

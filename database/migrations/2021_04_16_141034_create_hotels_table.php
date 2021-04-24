@@ -21,7 +21,7 @@ class CreateHotelsTable extends Migration
             $table->text('hot_details');
             $table->string('hot_type');
             $table->string('hot_image');
-            $table->unsignedbiginteger('admin_id');
+            $table->unsignedbiginteger('admin_id')->nullable();
             $table->timestamps();
             $table->foreign('admin_id')
                 ->references('id')

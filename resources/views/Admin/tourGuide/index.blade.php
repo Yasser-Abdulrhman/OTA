@@ -9,11 +9,11 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.hotels')}}">Hotels</a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.tourGuide')}}">TourGuide</a>
                                 </li>
 {{--                                <li class="breadcrumb-item active"><a href="{{route('admin.hotels')}}">اللغات</a>--}}
 {{--                                </li>--}}
-                                <li class="breadcrumb-item active"><a href="{{route('admin.hotels.create')}}">Add Hotels</a>
+                                <li class="breadcrumb-item active"><a href="{{route('admin.tourGuide.create')}}">Add Hotels</a>
                                 </li>
                             </ol>
                         </div>
