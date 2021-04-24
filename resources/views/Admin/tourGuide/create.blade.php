@@ -60,7 +60,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">Tour Guide Name</label>
-                                                            <input type="text" value="" id="hot_name"
+                                                            <input type="text" value="" id="name"
                                                                    class="form-control"
                                                                    placeholder=""
                                                                    name="name">
@@ -77,8 +77,8 @@
                                                                    class="form-control"
                                                                    placeholder=""
                                                                    value=""
-                                                                   name="phone ">
-                                                            @error("phone ")
+                                                                   name="phone">
+                                                            @error("phone")
                                                             <span class="text-danger font-size-large">{{$message}}</span>
                                                             @enderror
                                                         </div>

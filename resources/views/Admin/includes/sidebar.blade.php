@@ -57,10 +57,10 @@
                 </a>
 
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="#"
+                    <li class="active"><a class="menu-item" href="{{route('admin.tourGuide')}}"
                                           data-i18n="nav.dash.ecommerce">Show All Tour Guide</a>
                     </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.dash.crypto">Add Tour Guide</a>
+                    <li><a class="menu-item" href="{{route('admin.tourGuide.create')}}" data-i18n="nav.dash.crypto">Add Tour Guide</a>
                     </li>
                 </ul>
             </li>

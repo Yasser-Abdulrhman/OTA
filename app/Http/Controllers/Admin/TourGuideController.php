@@ -28,16 +28,16 @@ class TourGuideController extends Controller
                 $filePath = $this->saveImages($request->image,'Images/tourGuide/');
             }
 
-            Hotel::create([
+            TourGuide::create([
                 'image' => $filePath,
                 'name' => $request ->name,
-                'phone ' => $request ->phone
+                'phone' => $request ->phone
             ]);
 
             return redirect()->route('admin.tourGuide')->with(['success' => 'TourGuide Added Successfully']);
 
         } catch(\Exception $ex) {
-//            dd($ex);
+            dd($ex);
             return redirect()->route('admin.tourGuide')->with(['error' => 'Entering data wrong, try again later']);
         }
 
@@ -66,7 +66,7 @@ class TourGuideController extends Controller
             DB::beginTransaction();
             //photo
             if ($request->has('image') ) {
-                $filePath = $this->saveImages($request->image,'Images/tourGuide/');
+                $filePath = $this->saveImages($request->image,'Images/TourGuides/');
                 TourGuide::where('id', $tour_guide_id)
                     ->update([
                         'image' => $filePath,

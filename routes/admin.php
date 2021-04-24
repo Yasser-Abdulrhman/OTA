@@ -54,7 +54,7 @@ define('PAGINATION_COUNT',10);
     ############################## End Tours Routes ###################################
     ############################## Start Tour Guide Routes ###################################
     Route::group(['prefix' => 'tour_guide'], function () {
-        Route::get('/', [TourGuideController::class, 'index'])->name('admin.cars');
+        Route::get('/', [TourGuideController::class, 'index'])->name('admin.tourGuide');
         Route::get('create', [TourGuideController::class, 'create'])->name('admin.tourGuide.create');
         Route::post('store',[TourGuideController::class,'store'])->name('admin.tourGuide.store');
         Route::get('edit/{tour_guide_id}',[TourGuideController::class,'edit'])->name('admin.tourGuide.edit');
