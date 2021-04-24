@@ -75,14 +75,18 @@
 						<nav class="menu">
 							<ul>
 								<li class="type-1 active">
-									<a href="index.php">home<span class="fa fa-angle-down"></span></a>
+									<a href="{{route('home.index')}}">home<span class="fa fa-angle-down"></span></a>
 								</li>
-								<li class="type-1"><a href="hotels.index">Hotels<span class="fa fa-angle-down"></span></a>
+								<li class="type-1">
+									<a href="{{route('tours.index')}}">Tours<span class="fa fa-angle-down"></span></a>
 								</li>
-								<li class="type-1"><a href="cars">Cars<span class="fa fa-angle-down"></span></a>
+								<li class="type-1">
+									<a href="{{route('hotels.index')}}">Hotels<span class="fa fa-angle-down"></span></a>
 								</li>
-								<li class="type-1"><a href="{{route('tours.index')}}">Tours<span class="fa fa-angle-down"></span></a>
+								<li class="type-1">
+									<a href="{{route('cars.index')}}">Cars<span class="fa fa-angle-down"></span></a>
 								</li>
+								
 							</ul>
 						</nav>
 					</div>

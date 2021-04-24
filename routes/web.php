@@ -8,6 +8,7 @@ use App\Http\Controllers\TourController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\BookTourController;
+use App\Http\Controllers\BookHotelController;
 use App\Http\Controllers\UserController;
 
 
@@ -65,7 +66,8 @@ Route::resource('tours', TourController::class);
 Route::resource('hotels', HotelController::class);
 Route::resource('cars', CarController::class);
 Route::resource('booktour', BookTourController::class);
-Route::get('/', [HomeController::class, 'index']);
+Route::resource('bookhotel', BookHotelController::class);
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 // Route::get('tours/asc', [TourController::class, 'tourAsc'])->name('tours.asc');
 

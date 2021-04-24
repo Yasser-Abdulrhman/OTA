@@ -538,12 +538,15 @@
                         </div>
                     </div>
                       <div class="list-content clearfix">
+                          @foreach ($data as $item)
                           <div class="list-item-entry">
                             <div class="hotel-item style-8 bg-white">
                                 <div class="table-view">
                                       <div class="radius-top cell-view">
-                                           <img src="img/imges/1.jpg" alt="">
-                                           <div class="price price-s-3 red tt">hot price</div>
+                                           <img src="img/hotels/{{$item->hot_image}}" alt="">
+                                           @if ($item->discount != 0)
+                                           <div class="price price-s-3 red tt">-{{$item->discount}}%</div>                                                                                             
+                                           @endif
                                       </div>
                                       <div class="title hotel-middle clearfix cell-view">
                                           <div class="hotel-person color-dark-2 list-hidden">from <span>$83</span></div>
@@ -557,9 +560,8 @@
                                             </div>
                                             <i>44 rewies</i> 
                                         </div>
-                                          <h4><b>Pioneer</b></h4>
-                                        <p class="f-14">Pioneer features a restaurant, outdoor swimming pool, a bar and shared lounge in Al Minya. Featuring family rooms, this property also provides guests with a terrace.
-                                        </p>
+                                          <h4><b>{{$item->hot_name}}</b></h4>
+                                        <p class="f-14">{{$item->hot_details}} </p>
                                         <div class="hotel-icons-block grid-hidden">
                                             <img class="hotel-icon" src="{{asset('img/tour_list/hotel_icon_1.png')}}" alt="">
                                             <img class="hotel-icon" src="{{asset('img/tour_list/hotel_icon_2.png')}}" alt="">
@@ -571,13 +573,19 @@
                                            <a href="hotel_list.html" class="c-button color-dr-blue hv-o b-40 fr list-hidden"><img src="" alt="">view on map</a>
                                     </div>
                                     <div class="title hotel-right bg-dr-blue clearfix cell-view">
-                                        <div class="hotel-person color-white">from <span>$70</span></div>
-                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="hotel_list.html">BOOK</a>
+                                        @if ($item->discount != 0)
+                                        <div class="hotel-person color-white">from <del>{{$item->hot_price}} EGP</del></div>                                                                                            
+                                        @endif
+                                        <div class="hotel-person color-white">{{$item->hot_price-($item->hot_price*$item->discount/100)}} EGP</div>                                                                                            
+
+                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="{{route('hotels.show' , $item)}}">BOOK</a>
                                     </div>						            
                                 </div>
                             </div>						
                           </div>
-                          <div class="list-item-entry">
+                          @endforeach
+                         
+                          {{-- <div class="list-item-entry">
                             <div class="hotel-item style-8 bg-white">
                                 <div class="table-view">
                                       <div class="radius-top cell-view">
@@ -781,7 +789,7 @@
                                     </div>						            
                                 </div>
                             </div>						
-                          </div>
+                          </div> --}}
                    
                             </div>						
                           </div>  						  						  						  						  						  						 						  						  						  						  						  						  						  						

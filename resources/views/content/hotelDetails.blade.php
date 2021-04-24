@@ -48,19 +48,19 @@
                             data-speed="500" data-center="0" data-slides-per-view="1">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide active" data-val="0">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/1.jpg')}}" alt="">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="1">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/10.jpg')}}" alt="">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="2">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/4.jpg')}}"alt="">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}"alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="3">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/9.jpg')}}">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}">
                                 </div>
                                 <div class="swiper-slide" data-val="4">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/8.jpg')}}" alt="">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}" alt="">
                                 </div>
                             </div>
                             <div class="pagination pagination-hidden"></div>
@@ -70,19 +70,19 @@
                             data-md-slides="5" data-lg-slides="5" data-add-slides="5">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide current active" data-val="0">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/1.jpg')}}" alt="">
+                                    <img class="img-responsive img-full"src="../../img/hotels/{{$data->hot_image}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="1">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/10.jpg')}}" alt="">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="2">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/4.jpg')}}" alt="">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="3">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/9.jpg')}}" alt="">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="4">
-                                    <img class="img-responsive img-full" src="{{asset('img/imges/8.jpg')}}" alt="">
+                                    <img class="img-responsive img-full" src="../../img/hotels/{{$data->hot_image}}" alt="">
                                 </div>
                             </div>
                             <div class="pagination hidden"></div>
@@ -95,7 +95,7 @@
                             <div class="tab-nav-wrapper">
                                 <div class="nav-tab  clearfix">
                                     <div class="nav-tab-item active">
-                                        Tour Description
+                                        Hotel Description
                                     </div>
                                     <div class="nav-tab-item">
                                         Details
@@ -110,18 +110,11 @@
                             </div>
                             <div class="tabs-content clearfix">
                                 <div class="tab-info active ">
-                                    <h3>General Information About Tuna Elgabel</h3>
-                                    <p>This area is located to the west of the ancient town of Ashmonin and it was a
-                                        very important section in the Roman period where it served as a burial site
-                                        for the town. Tuna Al Jebel contains burial homes with wall paintings that
-                                        are very unique because it was created with a mixture of Roman and ancient
-                                        Egyptian art.
-                                        Excavation work is still going on in this area and archaeologists are still
-                                        making new discoveries. The area has many tombs worth visiting like the tomb
-                                        of Petozeris, the tomb of Asadora, and the tomb of the god Tehot.
+                                    <h3>General Information About {{$data->hot_name}}</h3>
+                                    <p> {{$data->hot_details}}
                                     </p>
-                                    <img class="right-img" src="{{asset('img/tour_list/image/10.jpg')}}" alt="">
-                                    <h4>interesting for you</h4>
+                                    <img class="right-img" src="../../img/hotels/{{$data->hot_image}}" alt="">
+                                    <h4>interesting for you </h4>
                                     <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
                                         aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
                                     </p>
@@ -140,16 +133,15 @@
                                 </div>
                                 <div class="tab-info">
                                     <h3>General Information About tour</h3>
-                                    <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
-                                        aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
-                                        Pellentesque ac turpis egestas, varius justo et, condimentum augue. Lorem
-                                        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                                    <p>{{$data->hot_details}}
                                     </p>
                                     <ul>
-                                        <li>Shopping history</li>
-                                        <li>Hot offers according your settings</li>
-                                        <li>Multi-product search</li>
-                                        <li>Opportunity to share with friends</li>
+                                        <li>Hotel Price : {{$data->hot_price}}EGP</li>
+                                        @if ($data->discount !=0)
+                                        <li>Discount : {{$data->discount}}%</li> 
+                                        <li>Hotel price after discount : {{$data->hot_price-($data->hot_price*$data->discount/100)}}EGP</li>
+
+                                        @endif
                                     </ul>
                                     <h4>interesting for you</h4>
                                     <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
@@ -190,7 +182,9 @@
                                 </div>
                                 <div class="tab-info">
                                     <form class="simple-from" name="information"
-                                        onsubmit="return validateFormTour()">
+                                        onsubmit="return validateFormTour()" method="POST" action="{{route('bookhotel.store' ,["id" =>$data] )}}">
+                                        @csrf
+                                        
                                         <div class="simple-group">
                                             <h3 class="small-title color-dr-blue-2 ">Hotel Selection</h3>
                                             <div class="row">
@@ -198,7 +192,7 @@
                                                     <div class="form-block type-2 clearfix">
                                                         <div class="form-label color-dark-2">Check In</div>
                                                         <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                            <input type="date" placeholder="Mm/Dd/Yy" class="">
+                                                            <input type="date" placeholder="Mm/Dd/Yy" class="" name="check_in_date">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -206,11 +200,11 @@
                                                     <div class="form-block type-2 clearfix">
                                                         <div class="form-label color-dark-2">Check Out</div>
                                                         <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                            <input type="date" placeholder="Mm/Dd/Yy" class="">
+                                                            <input type="date" placeholder="Mm/Dd/Yy" name="check_out_date" class="">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="col-xs-12 col-sm-6">
+                                               {{-- <div class="col-xs-12 col-sm-6">
                                                     <div class="form-block type-2 clearfix">
                                                         <div class="form-label color-dark-2">Number of persons</div>
                                                         <div class="drop-wrap drop-wrap-s-4 color-5">
@@ -228,40 +222,36 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> -->
-                                                <div class="col-xs-12 col-sm-6">
+                                                </div>  --}}
+                                                {{-- <div class="col-xs-12 col-sm-6">
                                                     <div class="form-block type-2 clearfix">
                                                         <div class="form-label color-dark-2">Number Of Rooms</div>
                                                         <div class="drop-wrap drop-wrap-s-4 color-5">
-                                                            <div class="drop">
-                                                                <b id="numRoomHotel">1</b>
-                                                                <span id="person"></span>
-                                                                <a href="#" class="drop-list"><i
-                                                                        class="fa fa-angle-down"></i></a>
-                                                                <span>
-                                                                    <a href="#" class="numRoomHotel">1</a>
-                                                                    <a href="#" class="numRoomHotel">2</a>
-                                                                    <a href="#" class="numRoomHotel">3</a>
-                                                                    <a href="#" class="numRoomHotel">4</a>
-                                                                </span>
-                                                            </div>
+                                                            <a href="#" class="drop-list"><i
+                                                                class="fa fa-angle-down"></i></a>
+                                                        <select class=" drop">
+                                                            <option selected>Open this select menu</option>
+                                                            <option value="1" class="numPersonHotel">One</option>
+                                                            <option value="2" class="numPersonHotel">Two</option>
+                                                            <option value="3" class="numPersonHotel">Three</option>
+                                                        </select>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
 
-                                                <div class="col-xs-12 col-sm-12">
+                                                {{-- <div class="col-xs-12 col-sm-12">
                                                     <div class="form-block type-2 clearfix">
                                                         <div class="sidebar-text-label bg-dr-blue-2 color-white">
                                                             <span class="h3">Total Price : <span id="totalPrice">
                                                                 </span> EGP </span>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <hr>
                                         </div>
-                                        <div class="simple-group">
+                                        {{-- <div class="simple-group">
                                             <h3 class="small-title color-dr-blue-2">Your Personal Information</h3>
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6">
@@ -342,7 +332,7 @@
 
                                             </div>
                                             <hr>
-                                        </div>
+                                        </div> --}}
 
                                         <input type="submit" class="c-button bg-dr-blue-2 hv-dr-blue-2-o"
                                             value="confirm booking">
@@ -465,7 +455,7 @@
             <div class="col-xs-12 col-md-4">
                 <div class="right-sidebar">
                     <iframe class="padd-40"
-                        src="https://www.google.com/maps?q=Minya%2C%20Qism%20Minya%2C%20Minya%2C%20Egypt&z=14&t=&ie=UTF8&output=embed"
+                        src="{{$data->hot_address}}"
                         height="250px" width="100%"></iframe><noscript> Full functionality of this site requires
                         JavaScript to
                         be enabled. Learn how to <a href="https://javascriptdownload.org/">Download

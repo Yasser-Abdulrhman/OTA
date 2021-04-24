@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookTour;
-use App\Models\Tour;
+use App\Models\BookHotel;
 use Illuminate\Http\Request;
 
-class BookTourController extends Controller
+class BookHotelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,10 @@ class BookTourController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -38,40 +38,36 @@ class BookTourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request )
+    public function store(Request $request)
     {
         //
         $request->validate([
-            'book_date' => 'required | date',
+            'check_in_date' => 'required | date',
+            'check_out_date' => 'required | date',
         ]);
         $input = $request->all();
         
         $input['user_id'] = auth()->user()->id;
-        $input['tour_id'] = (int)$input['id'];
+        $input['hotel_id'] = (int)$input['id'];
         //dd($input);
 
-        if(BookTour::find($input['user_id']) == null && BookTour::find($input['tour_id']) == null )
+        if(BookHotel::find($input['user_id']) == null && BookHotel::find($input['hotel_id']) == null )
         {
-          BookTour::create($input);
-          return redirect()->route('tours.index');
+          BookHotel::create($input);
+          return redirect()->route('hotels.index');
         }
         else{
-        return redirect()->route('tours.show' ,  $input['tour_id']);
+        return redirect()->route('hotels.show' ,  $input['hotel_id']);
         }
-
-        
-
-
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BookTour  $bookTour
+     * @param  \App\Models\BookHotel  $bookHotel
      * @return \Illuminate\Http\Response
      */
-    public function show(BookTour $bookTour)
+    public function show(BookHotel $bookHotel)
     {
         //
     }
@@ -79,10 +75,10 @@ class BookTourController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BookTour  $bookTour
+     * @param  \App\Models\BookHotel  $bookHotel
      * @return \Illuminate\Http\Response
      */
-    public function edit(BookTour $bookTour)
+    public function edit(BookHotel $bookHotel)
     {
         //
     }
@@ -91,10 +87,10 @@ class BookTourController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BookTour  $bookTour
+     * @param  \App\Models\BookHotel  $bookHotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BookTour $bookTour)
+    public function update(Request $request, BookHotel $bookHotel)
     {
         //
     }
@@ -102,14 +98,11 @@ class BookTourController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BookTour  $bookTour
+     * @param  \App\Models\BookHotel  $bookHotel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BookTour $bookTour)
+    public function destroy(BookHotel $bookHotel)
     {
         //
     }
-
-
- 
 }
