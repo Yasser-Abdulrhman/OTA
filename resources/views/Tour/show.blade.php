@@ -41,19 +41,19 @@
                             data-speed="500" data-center="0" data-slides-per-view="1">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide active" data-val="0">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="1">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="2">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="3">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="4">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                             </div>
                             <div class="pagination pagination-hidden"></div>
@@ -63,19 +63,19 @@
                             data-md-slides="5" data-lg-slides="5" data-add-slides="5">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide current active" data-val="0">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="1">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="2">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="3">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                                 <div class="swiper-slide" data-val="4">
-                                    <img class="img-responsive img-full" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <img class="img-responsive img-full" src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
                                 </div>
                             </div>
                             <div class="pagination hidden"></div>
@@ -91,9 +91,9 @@
                                     <div class="nav-tab-item">
                                         Details
                                     </div>
-                                    {{-- <div class="nav-tab-item">
+                                    <div class="nav-tab-item">
                                         Reviews
-                                    </div> --}}
+                                    </div>
                                     <div class="nav-tab-item">
                                         Booking
                                     </div>
@@ -101,9 +101,17 @@
                             </div>
                             <div class="tabs-content clearfix">
                                 <div class="tab-info active ">
-                                    <h3>General Information About {{$data->tour_name}}</h3>
-                                    <p>{{ $data->tour_details }} </p>
-                                    <img class="right-img" src="../../img/tour/{{$data->tour_image}}" alt="">
+                                    <h3>General Information About Tuna Elgabel</h3>
+                                    <p>This area is located to the west of the ancient town of Ashmonin and it was a
+                                        very important section in the Roman period where it served as a burial site
+                                        for the town. Tuna Al Jebel contains burial homes with wall paintings that
+                                        are very unique because it was created with a mixture of Roman and ancient
+                                        Egyptian art.
+                                        Excavation work is still going on in this area and archaeologists are still
+                                        making new discoveries. The area has many tombs worth visiting like the tomb
+                                        of Petozeris, the tomb of Asadora, and the tomb of the god Tehot.
+                                    </p>
+                                    <img class="right-img" src="{{asset('img/tour_list/image/10.jpg')}}" alt="">
                                     <h4>interesting for you</h4>
                                     <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
                                         aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
@@ -122,17 +130,19 @@
                                         dolore magna aliqua.</p>
                                 </div>
                                 <div class="tab-info">
-                                    <h3>{{ Str::upper($data->tour_name) }} Details</h3>
-                                    <p>{{ $data->tour_details }}
+                                    <h3>General Information About tour</h3>
+                                    <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
+                                        aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
+                                        Pellentesque ac turpis egestas, varius justo et, condimentum augue. Lorem
+                                        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
                                     </p>
-                                    
                                     <ul>
-                                        <li>Price : {{$data->tour_price}} EGP per person </li>
-                                        <li>Discount : 10%</li>
+                                        <li>Shopping history</li>
+                                        <li>Hot offers according your settings</li>
                                         <li>Multi-product search</li>
                                         <li>Opportunity to share with friends</li>
                                     </ul>
-                                    {{-- <h4>interesting for you</h4>
+                                    <h4>interesting for you</h4>
                                     <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
                                         aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
                                     </p>
@@ -141,9 +151,9 @@
                                         aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
                                         Pellentesque varius justo et, condimentum augue. Lorem ipsum dolor sit amet,
                                         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                        dolore magna aliqua.</p> --}}
+                                        dolore magna aliqua.</p>
                                 </div>
-                                {{-- <div class="tab-info">
+                                <div class="tab-info">
 
                                     <img class="right-img" src="{{asset('img/detail/tab_img.jpg')}}" alt="">
                                     <h3>General Information About tour</h3>
@@ -168,37 +178,34 @@
                                         Pellentesque varius justo et, condimentum augue. Lorem ipsum dolor sit amet,
                                         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                                         dolore magna aliqua.</p>
-                                </div> --}}
+                                </div>
                                 <div class="tab-info">
-                                    @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                      <ul>
-                                          @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                          @endforeach
-                                      </ul>
-                                    </div><br />
-                                  @endif
-                                    <form class="simple-from" 
-                                        onsubmit="return validateFormTour()" action="{{route('booktour.store' ,["id" =>$data] )}}" method="post" >
-                                        @csrf
+                                    <form class="simple-from" name="information"
+                                        onsubmit="return validateFormTour()">
                                         <div class="simple-group">
-                                            <h3 class="small-title color-dr-blue-2 ">Tour Booking</h3>
+                                            <h3 class="small-title color-dr-blue-2 ">Tour Selection</h3>
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6">
                                                     <div class="form-block type-2 clearfix">
                                                         <div class="form-label color-dark-2">Check In</div>
                                                         <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                            <input type="date" placeholder="Mm/Dd/Yy" class="" name="book_date">
+                                                            <input type="date" placeholder="Mm/Dd/Yy" class="">
                                                         </div>
                                                     </div>
                                                 </div>
-                                           
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">Check Out</div>
+                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
+                                                            <input type="date" placeholder="Mm/Dd/Yy" class="">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-xs-12 col-sm-6">
                                                     <div class="form-block type-2 clearfix">
                                                         <div class="form-label color-dark-2">Number of persons</div>
                                                         <div class="drop-wrap drop-wrap-s-4 color-5">
-                                                            {{-- <div class="drop">
+                                                            <div class="drop">
                                                                 <b id="numPerson">1</b>
                                                                 <span id="person"></span>
                                                                 <a href="#" class="drop-list"><i
@@ -209,31 +216,140 @@
                                                                     <a href="#" class="tperson">3</a>
                                                                     <a href="#" class="tperson">4</a>
                                                                 </span>
-                                                            </div> --}}
-                                                            {{-- <div class="input-style-1 b-50 brd-0 type-2 color-3">
-                                                                <input type="number"  class="" name="person">
-                                                            </div> --}}
-                                                          
-                                                              
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
-                                               
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">Select Tour Guide</div>
+                                                        <div class="drop-wrap drop-wrap-s-4 color-5">
+                                                            <div class="drop">
+                                                                <b>Aya</b>
+                                                                <a href="#" class="drop-list"><i
+                                                                        class="fa fa-angle-down"></i></a>
+                                                                <span>
+                                                                    <a href="#">Romaysaa</a>
+                                                                    <a href="#">Bhnsawy</a>
+                                                                    <a href="#">Ahmed</a>
+                                                                    <a href="#">Yasser</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">Special Car</div>
+                                                        <div class="input-entry color-3">
+                                                            <input class="checkbox-form" id="sCar" name="checkbox"
+                                                                value="climat control" type="checkbox">
+                                                            <label class="clearfix" for="sCar">
+                                                                <span class="sp-check"><i
+                                                                        class="fa fa-check"></i></span>
+                                                                <span class="checkbox-text">Special Car</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                
-                                                {{-- <div class="col-xs-12 col-sm-12">
+                                                <hr>
+                                                <div class="col-xs-12 col-sm-12">
                                                     <div class="form-block type-2 clearfix">
                                                         <div class="sidebar-text-label bg-dr-blue-2 color-white">
                                                             <span class="h3">Total Price : <span id="totalPrice">
                                                                     500 </span> EGP </span>
                                                         </div>
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                             <hr>
                                         </div>
-                                       
+                                        <div class="simple-group">
+                                            <h3 class="small-title color-dr-blue-2">Your Personal Information</h3>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">First Name</div>
+                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
+                                                            <input type="text" name="fname"
+                                                                placeholder="Enter your first name">
+                                                            <span class="error color-dr-blue-2 "
+                                                                id="fnameErr"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">Last Name</div>
+                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
+                                                            <input type="text" name="lname"
+                                                                placeholder="Enter your last name">
+                                                            <span class="error color-dr-blue-2"
+                                                                id="lnameErr"></span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">E-mail Adress</div>
+                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
+                                                            <input type="email" name="email"
+                                                                placeholder="Enter your e-mail adress">
+                                                            <span class="error color-dr-blue-2"
+                                                                id="emailErr"></span>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-xs-12 col-sm-6">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">Verify E-mail Address
+                                                        </div>
+                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
+                                                            <input type="text"
+                                                                placeholder="Enter your e-mail adress for verify">
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">Governrate Code</div>
+                                                        <div class="drop-wrap drop-wrap-s-4 color-5">
+                                                            <div class="drop">
+                                                                <b>Minya (086) </b>
+                                                                <a href="#" class="drop-list"><i
+                                                                        class="fa fa-angle-down"></i></a>
+                                                                <span>
+                                                                    <a href="#">Asyt (055)</a>
+                                                                    <a href="#">Cairo (044)</a>
+                                                                    <a href="#">Sohag (063)</a>
+                                                                    <a href="#">Bani Swef (052)</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12">
+                                                    <div class="form-block type-2 clearfix">
+                                                        <div class="form-label color-dark-2">Phone Number</div>
+                                                        <div class="input-style-1 b-50 brd-0 type-2 color-3">
+                                                            <input type="number" name="mobile"
+                                                                placeholder="Enter your phone number">
+                                                            <span class="error color-dr-blue-2"
+                                                                id="mobileErr"></span>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <hr>
+                                        </div>
+
                                         <input type="submit" class="c-button bg-dr-blue-2 hv-dr-blue-2-o"
                                             value="confirm booking">
                                     </form>
@@ -346,7 +462,7 @@
             <div class="col-xs-12 col-md-4">
                 <div class="right-sidebar">
                     <iframe
-                        src="{{$data->tour_address}}"
+                        src="https://www.google.com/maps?q=Minya%2C%20Qism%20Minya%2C%20Minya%2C%20Egypt&z=14&t=&ie=UTF8&output=embed"
                         height="250px" width="100%"></iframe><noscript> Full functionality of this site requires
                         JavaScript to
                         be enabled. Learn how to <a href="https://javascriptdownload.org/">Download

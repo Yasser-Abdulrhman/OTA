@@ -63,4 +63,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * The tours that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tours(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'book_tour', 'user_id', 'tour_id');
+    }
 }

@@ -112,7 +112,7 @@
                                                 <h4>best offer</h4>
                                                 <h3 class="underline hover-it">Tuna El Gabel</h3>
                                                 <p class="color-blue">-15% off</p>
-                                                <a href="tours_detail.html"
+                                                <a href="{{route('tours.show' , 2)}}"
                                                     class="c-button b-50 bg-white"><span>view more</span></a>
                                             </div>
                                         </div>
@@ -246,7 +246,7 @@
                             <b>Sort by price</b>
                             <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
                             <span>
-                                <a href="#">ASC</a>
+                                {{-- <a href="{{route('tours.asc',$data)}}">ASC</a> --}}
                                 <a href="#">DESC</a>
                             </span>
                         </div>
@@ -256,7 +256,7 @@
                             <b>Sort by ranking</b>
                             <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
                             <span>
-                                <a href="#">ASC</a>
+                                <a href="">ASC</a>
                                 <a href="#">DESC</a>
                             </span>
                         </div>
@@ -268,63 +268,66 @@
                     </div>
                 </div>
                 <div class="list-content clearfix">
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
-                                    <div class="price price-s-4">$600</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
+                    @foreach ($data as $item)
+                        <div class="list-item-entry">
+                            <div class="hotel-item style-9 bg-white">
+                                <div class="table-view">
+                                    <div class="radius-top cell-view">
+                                        <img src="img/tour/{{$item->tour_image}}" alt="">
+                                        <div class="price price-s-4">$600</div>
                                     </div>
-                                    <h4><b>Tona Elgabl</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
+                                    <div class="title hotel-middle cell-view">
+                                        <div class="tour-info-line clearfix">
+                                            <div class="tour-info fl">
+                                                <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
+                                                <span class="font-style-2 color-grey-5">July <strong>19th
+                                                        2021</strong></span>
+                                            </div>
+                                            <div class="tour-info fl">
+                                                <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
+                                                <span class="font-style-2 color-grey-5">Minya</span>
+                                            </div>
                                         </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
+                                        <h4><b>{{ Str::upper($item->tour_name) }}</b></h4>
+                                        <div class="rate-wrap list-hidden">
+                                            <div class="rate">
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                            </div>
+                                            <i>485 rewies</i>
+                                        </div>
+                                        <p class="f-14 color-grey-3">{{$item->tour_details}}</p>
+                                        <div class="buttons-block bg-dr-blue-2">
+                                            <a href="{{route('tours.show' , $item)}}"
+                                                class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
+                                            <a href="tours_detail.html"
+                                                class="c-button b-40 bg-white hv-transparent fr">book now</a>
                                         </div>
                                     </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$755</span>
-                                        person</div>
+                                    <div class="title hotel-right clearfix cell-view grid-hidden">
+                                        <div class="rate-wrap">
+                                            <i>485 rewies</i>
+                                            <div class="rate">
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                            </div>
+                                        </div>
+                                        <div class="hotel-person color-dark-2"> <span class="color-blue">{{$item->tour_price}} EGP <br></span>
+                                           per person</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="list-item-entry">
+                        
+                    @endforeach
+                   
+                    {{-- <div class="list-item-entry">
                         <div class="hotel-item style-9 bg-white">
                             <div class="table-view">
                                 <div class="radius-top cell-view">
@@ -379,563 +382,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/5.jpg')}}" alt="">
-                                    <div class="price price-s-4">$450</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Tona Elgabl</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$450</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/162.jpg')}}" alt="">
-                                    <div class="price price-s-4">$650</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Rose Al-Youssef Gate</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img class="{{asset('img-fluid" src="img/tour_list/image/4.jpg')}}" alt="">
-                                    <div class="price price-s-4">$670</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Tona Elgabl</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="#" class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="#" class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/2.jpg')}}" alt="">
-                                    <div class="price price-s-4">$200</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Rose Al-Youssef Gate</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail" class="c-button b-40 bg-white hv-transparent fr">book
-                                            now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/9.JPG')}}" alt="">
-                                    <div class="price price-s-4">$400</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Tona Elgabl</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/4.jpg')}}" alt="">
-                                    <div class="price price-s-4">$550</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Rose Al-Youssef Gate</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
-                                    <div class="price price-s-4">$600</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Tona Elgabl</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/5.jpg')}}" alt="">
-                                    <div class="price price-s-4">$600</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Rose Al-Youssef Gate</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/8.jpg')}}" alt="">
-                                    <div class="price price-s-4">$700</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Tona Elgabl</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="#" class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="#" class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item-entry">
-                        <div class="hotel-item style-9 bg-white">
-                            <div class="table-view">
-                                <div class="radius-top cell-view">
-                                    <img src="{{asset('img/tour_list/image/9.JPG')}}" alt="">
-                                    <div class="price price-s-4">$450</div>
-                                </div>
-                                <div class="title hotel-middle cell-view">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/calendar_icon_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">July <strong>19th
-                                                    2021</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="{{asset('img/loc_icon_small_grey.png')}}" alt="">
-                                            <span class="font-style-2 color-grey-5">Minya</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Rose Al-Youssef Gate</b></h4>
-                                    <div class="rate-wrap list-hidden">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <div class="buttons-block bg-dr-blue-2">
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-grey-6-t hv-grey-3-t b-1">detail</a>
-                                        <a href="tours_detail.html"
-                                            class="c-button b-40 bg-white hv-transparent fr">book now</a>
-                                    </div>
-                                </div>
-                                <div class="title hotel-right clearfix cell-view grid-hidden">
-                                    <div class="rate-wrap">
-                                        <i>485 rewies</i>
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                    </div>
-                                    <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span>
-                                        person</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> --}}
+                   
                 </div>
 
                 <div class="c_pagination clearfix padd-120">

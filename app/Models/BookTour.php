@@ -10,6 +10,12 @@ class BookTour extends Model
     use HasFactory;
     protected $table = "book_tour";
     protected $fillable = [
-        'book_date','tour_id','user_id','created_at','updated_at'
+        'book_date',
+        'tour_id',
+        'user_id',
+        'created_at',
+        'updated_at'
     ];
+
+    
 }

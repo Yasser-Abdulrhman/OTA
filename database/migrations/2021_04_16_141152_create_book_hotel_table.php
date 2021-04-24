@@ -15,7 +15,6 @@ class CreateBookHotelTable extends Migration
     {
         Schema::create('book_hotel', function (Blueprint $table) {
             $table->id();
-            $table->date('book_date');
             $table->date('check_in_date');
             $table->date('check_out_date');
             $table->unsignedBigInteger('hotel_id');
